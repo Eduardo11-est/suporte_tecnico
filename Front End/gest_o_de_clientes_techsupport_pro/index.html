@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agilize Tech - Gestão de Clientes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#76777d",
+                        "secondary-fixed": "#d8e2ff",
+                        "tertiary": "#000000",
+                        "primary": "#000000",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "on-tertiary-container": "#98805d",
+                        "background": "#f7f9fb",
+                        "on-secondary-container": "#fefcff",
+                        "surface-tint": "#565e74",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c6c6cd",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-bright": "#f7f9fb",
+                        "secondary": "#0058be",
+                        "surface-variant": "#e0e3e5",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eceef0",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#131b2e",
+                        "on-tertiary-fixed": "#271901",
+                        "tertiary-fixed": "#fcdeb5",
+                        "primary-container": "#131b2e",
+                        "on-background": "#191c1e",
+                        "primary-fixed": "#dae2fd",
+                        "on-surface-variant": "#45464d",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "surface": "#f7f9fb",
+                        "secondary-container": "#2170e4",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary-fixed": "#001a42",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-primary-container": "#7c839b",
+                        "inverse-primary": "#bec6e0",
+                        "tertiary-container": "#271901"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "sidebar-width": "260px",
+                        "margin-md": "24px",
+                        "base": "4px",
+                        "margin-lg": "32px",
+                        "margin-sm": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "mono-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "mono-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body class="bg-surface text-on-surface">
+<div id="sidebar-container"></div>
+<!-- Main Canvas -->
+<main class="ml-sidebar-width min-h-screen flex flex-col">
+<!-- TopNavBar (Authority: Shared Components JSON) -->
+<header class="h-16 bg-surface border-b border-outline-variant flex justify-between items-center px-gutter sticky top-0 z-40">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary/20 transition-all font-body-md text-body-md" placeholder="Pesquisar clientes, tickets ou contratos..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button onclick="window.location.href='../index.html'" class="text-on-surface-variant hover:bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant text-label-md font-bold flex items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+Voltar ao Dashboard
+</button>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-all text-outline cursor-pointer">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-all text-outline cursor-pointer">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-3 cursor-pointer p-1 hover:bg-surface-container-low rounded-lg transition-all group">
+<img alt="Support Engineer Profile" class="w-8 h-8 rounded-full bg-secondary-fixed" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkRJ08u7UqxgIuZDpUdCrlgiKDZAFz0CA_Co_-ocAWV7WSpVsv37xS5TtRHmczysVD7jai9xI9sODCZHF6Vp49p2xS1zI3HXp3OZvovzz7to5vmahhjWOrVdzt_XUpBfoptsvMmMGpISaA6DGEcvyIl2j8GE7Fb-AhU4hhqTPCwXM_AN3yalhEuyLcRUVJ8JmitTdqXGPw_bWULo1hp9j81rVZSRLPUV4ZTGYT2guBbT8nNz33UA14tZ5USlXOFYn5JYt1fjWNrHQ"/>
+<div class="text-right">
+<p class="font-label-md text-label-md font-bold text-on-surface">Admin</p>
+<p class="text-[10px] text-outline">Engineer</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-gutter max-w-container-max mx-auto w-full space-y-8">
+<!-- Page Header & Main Actions -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Gestão de Clientes</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Visualize e gerencie a base de clientes e seus respectivos acordos de nível de serviço.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 border border-outline-variant bg-surface hover:bg-surface-container-low rounded-lg font-bold flex items-center gap-2 transition-all cursor-pointer">
+<span class="material-symbols-outlined">file_download</span>
+<span class="font-body-md text-body-md">Exportar Dados</span>
+</button>
+<button class="px-4 py-2 bg-secondary text-on-secondary hover:bg-opacity-90 rounded-lg font-bold flex items-center gap-2 transition-all cursor-pointer">
+<span class="material-symbols-outlined">person_add</span>
+<span class="font-body-md text-body-md">Novo Cliente</span>
+</button>
+</div>
+</div>
+<!-- Customer Summary Cards (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant hover:border-secondary transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary-fixed rounded-lg text-on-secondary-fixed group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined">group</span>
+</div>
+<span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">+12%</span>
+</div>
+<p class="text-outline font-label-md text-label-md mb-1 uppercase tracking-wider">Total de Clientes</p>
+<h3 class="font-headline-md text-headline-md text-on-surface" id="kpi-total-clientes">—</h3>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant hover:border-secondary transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary-fixed rounded-lg text-on-secondary-fixed group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined">description</span>
+</div>
+<span class="text-xs font-bold text-outline bg-surface-container px-2 py-1 rounded">Estável</span>
+</div>
+<p class="text-outline font-label-md text-label-md mb-1 uppercase tracking-wider">Contratos Ativos</p>
+<h3 class="font-headline-md text-headline-md text-on-surface" id="kpi-contratos-ativos">—</h3>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant hover:border-secondary transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary-fixed rounded-lg text-on-secondary-fixed group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined">star</span>
+</div>
+<span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">4.8 / 5.0</span>
+</div>
+<p class="text-outline font-label-md text-label-md mb-1 uppercase tracking-wider">Média de Satisfação</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">92.4%</h3>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant hover:border-error transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-error-container rounded-lg text-on-error-container group-hover:bg-error group-hover:text-on-error transition-colors">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<span class="text-xs font-bold text-error bg-error-container/20 px-2 py-1 rounded">Prioridade</span>
+</div>
+<p class="text-outline font-label-md text-label-md mb-1 uppercase tracking-wider">Tickets Críticos Abertos</p>
+<h3 class="font-headline-md text-headline-md text-on-surface" id="kpi-tickets-criticos">—</h3>
+</div>
+</div>
+<!-- Filters & Customer List -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
+<!-- Filter Bar -->
+<div class="p-6 border-b border-outline-variant flex flex-wrap gap-4 items-center bg-surface-container-low/30">
+<div class="flex-1 min-w-[300px] relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="w-full pl-9 pr-4 py-2 border border-outline-variant rounded-lg bg-surface text-body-md focus:ring-2 focus:ring-secondary/20" placeholder="Filtrar por nome ou setor..." type="text"/>
+</div>
+<div class="flex gap-3">
+<select class="border border-outline-variant rounded-lg bg-surface py-2 px-4 text-body-md font-bold text-on-surface focus:ring-2 focus:ring-secondary/20">
+<option>Status: Todos</option>
+<option>Ativo</option>
+<option>Inativo</option>
+<option>Pendente</option>
+</select>
+<select class="border border-outline-variant rounded-lg bg-surface py-2 px-4 text-body-md font-bold text-on-surface focus:ring-2 focus:ring-secondary/20">
+<option>Indústria: Todas</option>
+<option>Tecnologia</option>
+<option>Saúde</option>
+<option>Financeiro</option>
+<option>Varejo</option>
+</select>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-6 py-4 font-label-md text-label-md text-outline uppercase tracking-wider">Cliente</th>
+<th class="px-6 py-4 font-label-md text-label-md text-outline uppercase tracking-wider">Indústria</th>
+<th class="px-6 py-4 font-label-md text-label-md text-outline uppercase tracking-wider text-center">Tickets Ativos</th>
+<th class="px-6 py-4 font-label-md text-label-md text-outline uppercase tracking-wider text-center">Total Tickets</th>
+<th class="px-6 py-4 font-label-md text-label-md text-outline uppercase tracking-wider">Status SLA</th>
+<th class="px-6 py-4 font-label-md text-label-md text-outline uppercase tracking-wider">Contato Principal</th>
+<th class="px-6 py-4 font-label-md text-label-md text-outline uppercase tracking-wider text-right">Ações</th>
+</tr>
+</thead>
+<tbody id="customers-tbody" class="divide-y divide-outline-variant/30">
+<tr>
+  <td colspan="7" class="px-6 py-12 text-center">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+      <span class="material-symbols-outlined" style="font-size:40px;opacity:0.3;">sync</span>
+      <p style="color:#76777d;font-weight:500;">Carregando clientes do banco de dados...</p>
+    </div>
+  </td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-surface border-t border-outline-variant flex items-center justify-between">
+<p class="text-body-md text-outline" id="customers-count">Carregando...</p>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-container-low transition-all disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="px-3 py-1 bg-secondary text-on-secondary rounded text-body-md font-bold">1</button>
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface-container-low transition-all text-body-md">2</button>
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface-container-low transition-all text-body-md">3</button>
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dashboard Analytics Preview (Bento - Bottom Row) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- SLA Distribution -->
+<div class="lg:col-span-1 bg-surface-container-lowest p-6 rounded-xl border border-outline-variant">
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-6">Distribuição de SLA</h4>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between text-body-md">
+<span class="text-on-surface">No Prazo</span>
+<span class="font-bold">88%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-green-500 h-2 rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-body-md">
+<span class="text-on-surface">Em Alerta</span>
+<span class="font-bold">7%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-yellow-500 h-2 rounded-full" style="width: 7%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-body-md">
+<span class="text-on-surface">Vencido</span>
+<span class="font-bold">5%</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-error h-2 rounded-full" style="width: 5%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activities -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-6 rounded-xl border border-outline-variant">
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-6">Atividades Recentes dos Clientes</h4>
+<div class="space-y-4">
+<div class="flex gap-4 p-3 hover:bg-surface-container-low rounded-lg transition-all border-l-4 border-secondary">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary">update</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md font-bold text-on-surface">Global Corp atualizou o SLA de serviço</p>
+<p class="text-xs text-outline">Há 15 minutos via Dashboard de Admin</p>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-on-surface">more_vert</button>
+</div>
+<div class="flex gap-4 p-3 hover:bg-surface-container-low rounded-lg transition-all border-l-4 border-error">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-error">priority_high</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md font-bold text-on-surface">Safe Med registrou 3 novos tickets críticos</p>
+<p class="text-xs text-outline">Há 2 horas • Requer atenção imediata</p>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-on-surface">more_vert</button>
+</div>
+<div class="flex gap-4 p-3 hover:bg-surface-container-low rounded-lg transition-all border-l-4 border-slate-300">
+<div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-slate-500">person_add</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md font-bold text-on-surface">Novo contato principal adicionado: Smart Tech</p>
+<p class="text-xs text-outline">Há 4 horas • Adicionado por Marina J.</p>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-on-surface">more_vert</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Info -->
+<footer class="mt-auto py-6 px-gutter border-t border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+<p class="text-label-md text-outline uppercase tracking-widest">© 2025 Agilize Tech • Gestão de Clientes</p>
+<div class="flex gap-4">
+<a class="text-label-md text-secondary hover:underline font-bold" href="#">Documentação API</a>
+<a class="text-label-md text-secondary hover:underline font-bold" href="#">Suporte Sistema</a>
+</div>
+</footer>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../../Back End/supabase.js"></script>
+<script src="../../Back End/db.js"></script>
+<script src="../shared/js/sidebar.js"></script>
+<script src="app.js"></script>
+</body></html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Base de Conhecimento - TechSupport Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#3f465c",
+                    "outline-variant": "#c6c6cd",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#eceef0",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#f7f9fb",
+                    "secondary": "#0058be",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-variant": "#e0e3e5",
+                    "tertiary": "#000000",
+                    "primary": "#000000",
+                    "surface-container-high": "#e6e8ea",
+                    "outline": "#76777d",
+                    "secondary-fixed": "#d8e2ff",
+                    "surface-tint": "#565e74",
+                    "background": "#f7f9fb",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "on-tertiary-container": "#98805d",
+                    "on-secondary-container": "#fefcff",
+                    "on-secondary-fixed": "#001a42",
+                    "inverse-on-surface": "#eff1f3",
+                    "inverse-surface": "#2d3133",
+                    "tertiary-container": "#271901",
+                    "on-primary-container": "#7c839b",
+                    "inverse-primary": "#bec6e0",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d8dadc",
+                    "on-secondary-fixed-variant": "#004395",
+                    "primary-fixed": "#dae2fd",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-surface-variant": "#45464d",
+                    "on-tertiary-fixed": "#271901",
+                    "on-primary-fixed": "#131b2e",
+                    "tertiary-fixed": "#fcdeb5",
+                    "primary-container": "#131b2e",
+                    "on-background": "#191c1e",
+                    "surface": "#f7f9fb",
+                    "secondary-container": "#2170e4",
+                    "on-surface": "#191c1e",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-lg": "32px",
+                    "margin-sm": "16px",
+                    "gutter": "24px",
+                    "container-max": "1440px",
+                    "sidebar-width": "260px",
+                    "margin-md": "24px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "mono-sm": ["JetBrains Mono"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "mono-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body class="bg-background text-on-background">
+<!-- SideNavBar -->
+<div id="sidebar-container"></div>
+<!-- Main Content Area -->
+<main class="ml-sidebar-width min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest h-16 border-b border-outline-variant flex justify-between items-center px-margin-md w-full sticky top-0 z-40">
+<div class="flex items-center flex-1">
+<span class="material-symbols-outlined text-secondary mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md font-body-md w-64 text-on-surface-variant animate-pulse" placeholder="Pesquisar artigos ou tópicos..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button onclick="window.location.href='../index.html'" class="text-on-surface-variant hover:bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant text-label-md font-bold flex items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+Voltar ao Dashboard
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-1"></div>
+<button class="p-2 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-secondary hover:bg-surface-container-low transition-colors duration-200 rounded-full">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Close-up professional portrait of a tech-savvy individual in a modern, clean-lit office environment. The subject wears a minimalist dark shirt and glasses, reflecting a serious yet approachable IT professional persona. The lighting is soft and neutral, emphasizing clarity and corporate reliability, consistent with a high-end enterprise software application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEpom8BZtRaWmRfARfedLz4YPCkIULazfbd0uxMt5A028YKdAsFNXMPdltmJybKfma9PU_S3ADu7aUegz5tjRU3u5tuNdRpPnOQ0Xo6Q6J2SbriSIztThWCXZ3jue8zjvvYZLK9Mk6hjyZeO-a0Vu3qlERXH4sjPGAlpkv0fQQv1g2VNJu5qFKk4_AggyGMRKY0aI04pFZvRnxu3waHimhpEMBA2lQEI5R7Mo5IZ7viLeFQs3yIYtyJMcrCWqU0Bal1whApKlxo4Y"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-margin-lg max-w-container-max mx-auto w-full">
+<!-- Hero Search Section -->
+<section class="mb-12 text-center py-10 relative overflow-hidden rounded-xl bg-primary-container">
+<div class="relative z-10 px-6">
+<h2 class="text-headline-lg font-headline-lg text-white mb-6">Base de Conhecimento</h2>
+<div class="max-w-2xl mx-auto relative">
+<input class="w-full h-14 pl-14 pr-6 rounded-lg border-none shadow-lg focus:ring-2 focus:ring-secondary text-body-lg font-body-lg" placeholder="Pesquisar artigos, tutoriais ou soluções..." type="text"/>
+<span class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-outline text-[28px]">search</span>
+</div>
+</div>
+<!-- Subtle background decoration -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="absolute -right-20 -top-20 w-80 h-80 bg-secondary rounded-full blur-[100px]"></div>
+<div class="absolute -left-20 -bottom-20 w-60 h-60 bg-blue-400 rounded-full blur-[80px]"></div>
+</div>
+</section>
+<!-- Popular Categories -->
+<section class="mb-12">
+<h3 class="text-headline-sm font-headline-sm text-primary mb-6">Categorias Populares</h3>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-gutter">
+<!-- Category Card -->
+<div class="bg-white border border-outline-variant p-6 rounded-lg text-center article-card cursor-pointer group">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded-lg mx-auto mb-4 group-hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-secondary text-[32px]">lan</span>
+</div>
+<span class="font-headline-sm text-[16px] text-on-surface">Redes</span>
+<p class="text-label-md text-outline mt-1">42 Artigos</p>
+</div>
+<!-- Category Card -->
+<div class="bg-white border border-outline-variant p-6 rounded-lg text-center article-card cursor-pointer group">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded-lg mx-auto mb-4 group-hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-secondary text-[32px]">memory</span>
+</div>
+<span class="font-headline-sm text-[16px] text-on-surface">Hardware</span>
+<p class="text-label-md text-outline mt-1">28 Artigos</p>
+</div>
+<!-- Category Card -->
+<div class="bg-white border border-outline-variant p-6 rounded-lg text-center article-card cursor-pointer group">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded-lg mx-auto mb-4 group-hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-secondary text-[32px]">terminal</span>
+</div>
+<span class="font-headline-sm text-[16px] text-on-surface">Software</span>
+<p class="text-label-md text-outline mt-1">65 Artigos</p>
+</div>
+<!-- Category Card -->
+<div class="bg-white border border-outline-variant p-6 rounded-lg text-center article-card cursor-pointer group">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded-lg mx-auto mb-4 group-hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-secondary text-[32px]">admin_panel_settings</span>
+</div>
+<span class="font-headline-sm text-[16px] text-on-surface">Segurança</span>
+<p class="text-label-md text-outline mt-1">19 Artigos</p>
+</div>
+<!-- Category Card -->
+<div class="bg-white border border-outline-variant p-6 rounded-lg text-center article-card cursor-pointer group">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded-lg mx-auto mb-4 group-hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-secondary text-[32px]">cloud</span>
+</div>
+<span class="font-headline-sm text-[16px] text-on-surface">Cloud</span>
+<p class="text-label-md text-outline mt-1">31 Artigos</p>
+</div>
+</div>
+</section>
+<!-- Main Grid: Featured Articles + Sidebar -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left: Featured Articles -->
+<div class="lg:col-span-8 space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="text-headline-sm font-headline-sm text-primary">Artigos em Destaque</h3>
+<button class="text-secondary font-label-md text-label-md flex items-center gap-1 hover:underline">
+                            Ver todos <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- Article List Item -->
+<div class="bg-white border border-outline-variant rounded-lg p-6 article-card cursor-pointer">
+<div class="flex items-start gap-4">
+<div class="hidden sm:block shrink-0 w-24 h-24 rounded-lg overflow-hidden">
+<img alt="Server infrastructure" class="w-full h-full object-cover" data-alt="Professional high-tech server room with glowing blue LED indicators on dark metallic racks. The perspective is from a low angle looking down a clean corridor of sophisticated enterprise computing hardware. The environment conveys a sense of high-performance cloud architecture and robust cybersecurity infrastructure, using a palette of deep blues and cool grays." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjN6jvOvoctmBu7WZ-vV6FbQlEIcoyX3QXBH1SQJofrEGNMHumSNQbR2-rvEvPr6cOuosu6UpWFaQWeimMaVui8kF-4qZVVyG6GETH0YrSqI_OWhLFRqaYHanUd3jYi1X7g_JeWoTFdnyARFWl2s4oiKwbDI6KwE9f8tSCZr9lQyJWlMILtXsb2i2umo5Nug3-ZRqNklyQQ0bYQjQgvAR-qdoqeVYxLwpimSoySk_U57IOyH7e_tqkESYdta_dcjczRh5tYwk9mc4"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-0.5 bg-secondary-fixed text-on-secondary-fixed text-[10px] uppercase font-bold rounded">Cloud</span>
+<span class="text-label-md text-outline">• 5 min de leitura</span>
+</div>
+<h4 class="text-headline-sm font-headline-sm text-on-surface mb-2 group-hover:text-secondary">Configurando VPN na AWS com Transit Gateway</h4>
+<p class="text-body-md text-on-surface-variant line-clamp-2 mb-4">Aprenda a criar uma conexão segura entre seu data center local e suas VPCs na nuvem utilizando o AWS Transit Gateway para centralizar o tráfego...</p>
+<div class="flex items-center justify-between border-t border-surface-container-high pt-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Author" class="w-full h-full object-cover" data-alt="Detailed professional headshot of a senior systems administrator with a friendly expression. The background is a slightly blurred modern office space with soft daylight. The aesthetic is clean, professional, and trustworthy, suitable for a technical knowledge base author." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoTNFI3JEBOHXnMcpQaJveu8kFLL0vGnsgYpRpg5VNYgh65yTdQkUo9l05fPy8AbFcjNdre_wBDDksNIow-GEV8YRHhY8T9rO5gVuKZEV7I6bldwwEFeQSO6S9xYeU-upKhl2Gy37A-StlUIudIA-dYfsSYzuiIqACqxHCyQ-wr83NCrvXlWfxk2R61FGGPtV-bT9pqVlwMblO-1FbeaJFjOh6pYmhhBv-EAHAIwtkHNFZa_QSM3fr6nmvuDGVbH49_IgnoU3y0vA"/>
+</div>
+<span class="text-label-md font-label-md text-on-surface">Carlos Eduardo</span>
+</div>
+<span class="text-label-md text-outline">Atualizado em 12 Out 2023</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Article List Item -->
+<div class="bg-white border border-outline-variant rounded-lg p-6 article-card cursor-pointer">
+<div class="flex items-start gap-4">
+<div class="hidden sm:block shrink-0 w-24 h-24 rounded-lg overflow-hidden">
+<img alt="Cybersecurity laptop" class="w-full h-full object-cover" data-alt="A sleek, modern laptop displaying complex digital security code and encryption symbols on a dark screen. The keyboard is subtly backlit with blue light, sitting on a polished glass desk in a dimly lit, high-end office environment. The atmosphere is concentrated and secure, focusing on advanced cybersecurity protocols and technical expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtETq4nVPnkfS-BEK168qk679LurMjXdWG9_9RP03xmdH30Fu2-zrN8QUzsIuuk_sF3p22LDw2li_yLVTOQHYvm6MjXBPka7GjTfEGEBIjEiJylex0A8FJOnxdWuiKh6RqSXhoQmLQQ9F3dWLKAGMtLjN8rtSk60c5ABRFFZr61_ePlB7tya8TN6VJuDyBEwttjHn31GNsAVP32Uyk6ad7sHGzuEgWfW8JVFSnSk79DXzoyXfucMRAQJCnl8BqDLI4C-CHZ3xkfOE"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-0.5 bg-error-container text-on-error-container text-[10px] uppercase font-bold rounded">Segurança</span>
+<span class="text-label-md text-outline">• 8 min de leitura</span>
+</div>
+<h4 class="text-headline-sm font-headline-sm text-on-surface mb-2">Melhores práticas para MFA em ambientes críticos</h4>
+<p class="text-body-md text-on-surface-variant line-clamp-2 mb-4">Neste tutorial, discutimos as camadas adicionais de segurança para acessos administrativos e como implementar políticas de acesso condicional...</p>
+<div class="flex items-center justify-between border-t border-surface-container-high pt-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Author" class="w-full h-full object-cover" data-alt="Close-up professional portrait of a female cybersecurity analyst in a modern office. Her expression is focused and intelligent, with a background consisting of soft-focus data monitors. The overall look is professional, high-fidelity, and consistent with enterprise-grade tech support platforms." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqpa67TLuuB_83w4rkCWnmSACUkhLUez7oC5CfkUaNiLYN7ww6Mlcm578omFE1G3ln0pMvJ3QIZiVq0NU5eWWKykrIb2Vn3caZ2NzUVOMzzsFr1hNSp0KhWxhZ9fU8C6NF6jkEggcp8TkuMp07Z3U1LnU3BrI6t7scPy1YhLWVPELCTKT3Lu6BJWMNJ8ALgRH4BSen9Wyhmt7lbAoKEufM2bYAWbGIBcAsgis0iTOq1Nvka-LagLVXe_wH_98ygHATnbkeZVG5N6w"/>
+</div>
+<span class="text-label-md font-label-md text-on-surface">Mariana Silva</span>
+</div>
+<span class="text-label-md text-outline">Atualizado em 05 Out 2023</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Article List Item -->
+<div class="bg-white border border-outline-variant rounded-lg p-6 article-card cursor-pointer">
+<div class="flex items-start gap-4">
+<div class="hidden sm:block shrink-0 w-24 h-24 rounded-lg overflow-hidden">
+<img alt="Data dashboard" class="w-full h-full object-cover" data-alt="A high-resolution display showing a complex data dashboard with various charts, graphs, and performance metrics. The color scheme is dominated by navy blue, slate gray, and bright cyan accents. The scene is set in a professional, minimalist workspace, emphasizing data-driven decision making and advanced system monitoring capabilities." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChT9enZtDx2JImr3nCMZmPNTDxwczKo0vawDnb2UlCwi2EgTxojaK3cfWvAZHvRVCm6tswJrs6u6ys3VEx9xKuq0tF-CUv17HsgGVI_L-tLPyNcu2j3pL1MkHvIH3wBu_5gDBFD_JYtXWsTd9awEYa8MGOcrlek3vHzD8uopLPTte2IYMPXDYtaq0rMdLdtzIM0KZkSe_rUZ-Dl-UV3Cx6svoktEbpEb5EkTbhutMmEYeI9L2sCYJgBjSy_pg2uCEGSTmdu7HB-f0"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-0.5 bg-surface-container-high text-on-surface-variant text-[10px] uppercase font-bold rounded">Software</span>
+<span class="text-label-md text-outline">• 12 min de leitura</span>
+</div>
+<h4 class="text-headline-sm font-headline-sm text-on-surface mb-2">Guia Completo de Monitoramento com Prometheus e Grafana</h4>
+<p class="text-body-md text-on-surface-variant line-clamp-2 mb-4">Estabeleça um sistema de observabilidade robusto para seus microserviços. Do provisionamento básico à criação de alertas personalizados...</p>
+<div class="flex items-center justify-between border-t border-surface-container-high pt-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Author" class="w-full h-full object-cover" data-alt="Professional profile photo of a software engineer. The individual is wearing a smart-casual blazer, with a neutral and confident expression. The lighting is clean and balanced, representing high professional standards and technical authority in an enterprise environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTMAuDQHtqstm06aVOIjUeDcM7gxjOb8rBV_wJ6tTpObGKZXtd69GRHA35VV82XHC6zYwu6etG_LKvO4GuD63FPWKe4-z93DRQ4mhctBlMftIq9EMvx-TrLGtXyV5-7Ilg2_i2D345wBPFHnLfegjOTEtUfN_xojNewmfpiPSifmRH-3y92wVVAfAF6ZUllmIX5bpFz4KNq5pB6FKhn-ddR78HT1bTnNTRj3Gb4h_rIQCWdoUSbCiqER36pwUdqpKngOn1j2rik7U"/>
+</div>
+<span class="text-label-md font-label-md text-on-surface">André Torres</span>
+</div>
+<span class="text-label-md text-outline">Atualizado em 28 Set 2023</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Sidebar -->
+<aside class="lg:col-span-4 space-y-gutter">
+<!-- Recent Articles -->
+<div class="bg-white border border-outline-variant rounded-lg p-6">
+<h3 class="text-headline-sm font-headline-sm text-primary mb-6">Artigos Recentes</h3>
+<ul class="space-y-4">
+<li class="flex gap-3 group cursor-pointer">
+<div class="w-2 h-2 rounded-full bg-secondary mt-2 shrink-0"></div>
+<div>
+<h5 class="text-body-md font-semibold text-on-surface group-hover:text-secondary transition-colors">Resolução de problemas: Erro 502 no Nginx</h5>
+<p class="text-label-md text-outline">Há 2 horas</p>
+</div>
+</li>
+<li class="flex gap-3 group cursor-pointer">
+<div class="w-2 h-2 rounded-full bg-secondary mt-2 shrink-0"></div>
+<div>
+<h5 class="text-body-md font-semibold text-on-surface group-hover:text-secondary transition-colors">Atualização de firmware: Switches Catalyst 9000</h5>
+<p class="text-label-md text-outline">Há 5 horas</p>
+</div>
+</li>
+<li class="flex gap-3 group cursor-pointer">
+<div class="w-2 h-2 rounded-full bg-secondary mt-2 shrink-0"></div>
+<div>
+<h5 class="text-body-md font-semibold text-on-surface group-hover:text-secondary transition-colors">Backup automatizado com scripts Python e S3</h5>
+<p class="text-label-md text-outline">Ontem</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Popular Tags -->
+<div class="bg-white border border-outline-variant rounded-lg p-6">
+<h3 class="text-headline-sm font-headline-sm text-primary mb-6">Tags Populares</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-label-md rounded-full hover:bg-secondary hover:text-white cursor-pointer transition-colors">#azure</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-label-md rounded-full hover:bg-secondary hover:text-white cursor-pointer transition-colors">#vpn</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-label-md rounded-full hover:bg-secondary hover:text-white cursor-pointer transition-colors">#linux</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-label-md rounded-full hover:bg-secondary hover:text-white cursor-pointer transition-colors">#segurança</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-label-md rounded-full hover:bg-secondary hover:text-white cursor-pointer transition-colors">#kubernetes</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-label-md rounded-full hover:bg-secondary hover:text-white cursor-pointer transition-colors">#hardware</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-label-md rounded-full hover:bg-secondary hover:text-white cursor-pointer transition-colors">#firewall</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-label-md rounded-full hover:bg-secondary hover:text-white cursor-pointer transition-colors">#windows-server</span>
+</div>
+</div>
+<!-- CTA Help Card -->
+<div class="bg-secondary-container p-6 rounded-lg text-on-secondary-container">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined">support_agent</span>
+<h4 class="font-headline-sm text-[18px]">Não encontrou o que precisava?</h4>
+</div>
+<p class="text-body-md mb-6 opacity-90">Nossa equipe de especialistas está pronta para ajudar você com qualquer problema técnico.</p>
+<button class="w-full bg-white text-secondary font-bold py-3 rounded-lg hover:bg-surface-bright transition-colors">
+                            Abrir um Ticket
+                        </button>
+</div>
+</aside>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-auto py-8 px-margin-md border-t border-outline-variant bg-surface-container-lowest text-center">
+<p class="text-label-md text-outline">© 2023 TechSupport Pro Enterprise. Todos os direitos reservados.</p>
+</footer>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../../Back End/supabase.js"></script>
+<script src="../../Back End/db.js"></script>
+<script src="../shared/js/sidebar.js"></script>
+<script src="app.js"></script>
+</body></html>

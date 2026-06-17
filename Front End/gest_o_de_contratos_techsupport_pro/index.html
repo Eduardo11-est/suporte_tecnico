@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agilize Tech - Gestão de Contratos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#131b2e",
+                    "on-tertiary-fixed": "#271901",
+                    "inverse-on-surface": "#eff1f3",
+                    "primary-fixed": "#dae2fd",
+                    "surface-container": "#eceef0",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e0e3e5",
+                    "primary-fixed-dim": "#bec6e0",
+                    "outline-variant": "#c6c6cd",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#271901",
+                    "surface-bright": "#f7f9fb",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary": "#0058be",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#e6e8ea",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#001a42",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#fcdeb5",
+                    "primary": "#000000",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "surface": "#f7f9fb",
+                    "on-primary-fixed": "#131b2e",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "inverse-surface": "#2d3133",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "outline": "#76777d",
+                    "background": "#f7f9fb",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "tertiary": "#000000",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#98805d",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#fefcff",
+                    "surface-container-low": "#f2f4f6",
+                    "on-surface": "#191c1e",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#d8e2ff",
+                    "secondary-container": "#2170e4",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-background": "#191c1e",
+                    "surface-dim": "#d8dadc",
+                    "surface-tint": "#565e74",
+                    "on-surface-variant": "#45464d",
+                    "on-primary-container": "#7c839b",
+                    "inverse-primary": "#bec6e0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-lg": "32px",
+                    "sidebar-width": "260px",
+                    "container-max": "1440px",
+                    "gutter": "24px",
+                    "margin-md": "24px",
+                    "margin-sm": "16px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "mono-sm": ["JetBrains Mono"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["30px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "mono-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body class="font-body-md text-body-md overflow-hidden">
+<div id="sidebar-container"></div>
+<!-- Main Content Area -->
+<main class="ml-[260px] h-screen overflow-y-auto custom-scrollbar bg-surface">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-260px)] h-16 bg-surface border-b border-outline-variant z-10 flex justify-between items-center px-margin-md">
+<div class="flex items-center gap-8">
+<h2 class="font-headline-md text-headline-md text-on-surface">Contract Management</h2>
+<div class="hidden md:flex gap-6">
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 font-label-md text-label-md" href="#">All Contracts</a>
+<a class="text-on-surface-variant hover:text-secondary transition-opacity duration-150 font-label-md text-label-md" href="#">Renewals</a>
+<a class="text-on-surface-variant hover:text-secondary transition-opacity duration-150 font-label-md text-label-md" href="#">Archived</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button onclick="window.location.href='../index.html'" class="text-on-surface-variant hover:bg-surface-container transition-colors px-3 py-1.5 rounded-lg border border-outline-variant text-label-md font-bold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+Voltar ao Dashboard
+</button>
+<div class="h-8 w-px bg-outline-variant mx-1"></div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded-full">
+<span class="material-symbols-outlined">history</span>
+</button>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<img alt="Administrator Profile" class="h-9 w-9 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9CrgpcP7xYZFfKc6vRjJC9mVK_K3kG4RdhN63B-gqCq9l32Y6ZzlQFP7hCBln0IN1sqO4G1d0LeUmTmBeEf1D1UnNBvb7g79hfWiuBX5ORirfgCZnUcBzmvnkW8LD-fdS10eAdVm_ZkpfnGZUA9oe-aRC5O21xBvqRzbtdHvKYhrHAkl6ZT66qSE_2qtLnVWKUDoRLZ7Yo61wfZGrb1HJXPigdl28tuuGwJbrcXAJNfr0YabVNX-mKjkg0SNI_C4ksq1rhFag8b8"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<div class="pt-24 px-margin-md pb-margin-lg max-w-container-max mx-auto">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-primary">Gestão de Contratos</h3>
+<p class="text-on-surface-variant mt-1">Monitore e administre os acordos de nível de serviço (SLA) de seus clientes.</p>
+</div>
+<button class="bg-secondary text-on-secondary px-6 py-2.5 rounded-lg font-label-md text-label-md flex items-center gap-2 shadow-sm hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                    Novo Contrato
+                </button>
+</div>
+<!-- Stats Summary Row -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-8">
+<div class="bg-surface-container-lowest border border-outline-variant p-margin-sm rounded-xl">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase tracking-tight">Total de Contratos</span>
+<span class="material-symbols-outlined text-secondary">description</span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<span id="kpi-total-contratos" class="font-headline-md text-headline-md text-primary">—</span>
+<span class="text-green-600 text-[12px] font-bold">+12%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-margin-sm rounded-xl">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase tracking-tight">Receita Mensal (MRR)</span>
+<span class="material-symbols-outlined text-secondary">payments</span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<span id="kpi-mrr" class="font-headline-md text-headline-md text-primary">R$ —</span>
+<span class="text-green-600 text-[12px] font-bold">+4.3%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-margin-sm rounded-xl">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase tracking-tight">A Vencer (30 dias)</span>
+<span class="material-symbols-outlined text-error">event_busy</span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<span id="kpi-a-vencer" class="font-headline-md text-headline-md text-primary">—</span>
+<span class="text-error text-[12px] font-bold">Atenção</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-margin-sm rounded-xl">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant font-label-md text-label-md uppercase tracking-tight">Média de SLA</span>
+<span class="material-symbols-outlined text-secondary">verified</span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-primary">99.4%</span>
+<span class="text-green-600 text-[12px] font-bold">Meta OK</span>
+</div>
+</div>
+</div>
+<!-- Dashboard Layout Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Central Data Table Section -->
+<div class="col-span-12 lg:col-span-9">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<!-- Filter Bar -->
+<div class="p-4 border-b border-outline-variant flex flex-col md:flex-row justify-between gap-4 bg-surface-container-low/50">
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 border border-outline-variant rounded-lg bg-surface text-body-md focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all" placeholder="Buscar por cliente ou ID..." type="text"/>
+</div>
+<div class="flex gap-2">
+<select class="px-4 py-2 border border-outline-variant rounded-lg bg-surface text-body-md focus:border-secondary outline-none">
+<option>Todos os Status</option>
+<option>Ativo</option>
+<option>A Vencer</option>
+<option>Renovado</option>
+</select>
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                                    Filtros
+                                </button>
+</div>
+</div>
+<!-- Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase">Cliente</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase">Plano</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase text-center">Início / Fim</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase text-right">Mensalidade</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase">Status</th>
+<th class="px-6 py-4 font-label-md text-label-md text-on-surface-variant uppercase"></th>
+</tr>
+</thead>
+<tbody id="contracts-tbody" class="divide-y divide-outline-variant">
+<tr>
+  <td colspan="6" class="px-6 py-12 text-center">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+      <span class="material-symbols-outlined" style="font-size:40px;opacity:0.3;">sync</span>
+      <p style="color:#76777d;font-weight:500;">Carregando contratos do banco de dados...</p>
+    </div>
+  </td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="p-4 bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+<span class="text-[12px] text-on-surface-variant" id="contracts-count">Carregando...</span>
+<div class="flex gap-1">
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<button class="px-3 py-1 bg-secondary text-on-secondary rounded text-[12px] font-bold">1</button>
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface text-[12px]">2</button>
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface text-[12px]">3</button>
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface transition-colors">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Panel: Expiring Contracts -->
+<div class="col-span-12 lg:col-span-3 space-y-gutter">
+<!-- Expiring Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-margin-sm">
+<div class="flex items-center justify-between mb-4">
+<h4 class="font-headline-sm text-headline-sm text-primary">Contratos a Vencer</h4>
+<span class="bg-error/10 text-error px-2 py-0.5 rounded-full text-[10px] font-bold uppercase">Prioridade</span>
+</div>
+<div class="space-y-3">
+<!-- Expiring Item 1 -->
+<div class="p-3 border border-outline-variant rounded-lg bg-surface-container-low/30 hover:shadow-sm transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-1">
+<span class="font-bold text-body-md text-primary truncate max-w-[140px]">Global Prime</span>
+<span class="text-error font-bold text-[12px]">8 dias</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-error h-full" style="width: 90%"></div>
+</div>
+<div class="mt-2 flex justify-between items-center">
+<span class="text-[11px] text-on-surface-variant font-mono-sm">R$ 4.200,00</span>
+<button class="text-secondary text-[11px] font-bold hover:underline">RENOVAR</button>
+</div>
+</div>
+<!-- Expiring Item 2 -->
+<div class="p-3 border border-outline-variant rounded-lg bg-surface-container-low/30 hover:shadow-sm transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-1">
+<span class="font-bold text-body-md text-primary truncate max-w-[140px]">Innova Systems</span>
+<span class="text-amber-600 font-bold text-[12px]">14 dias</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-amber-500 h-full" style="width: 65%"></div>
+</div>
+<div class="mt-2 flex justify-between items-center">
+<span class="text-[11px] text-on-surface-variant font-mono-sm">R$ 7.150,00</span>
+<button class="text-secondary text-[11px] font-bold hover:underline">NOTIFICAR</button>
+</div>
+</div>
+<!-- Expiring Item 3 -->
+<div class="p-3 border border-outline-variant rounded-lg bg-surface-container-low/30 hover:shadow-sm transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-1">
+<span class="font-bold text-body-md text-primary truncate max-w-[140px]">Portal Edu Ltda</span>
+<span class="text-amber-600 font-bold text-[12px]">22 dias</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-amber-400 h-full" style="width: 40%"></div>
+</div>
+<div class="mt-2 flex justify-between items-center">
+<span class="text-[11px] text-on-surface-variant font-mono-sm">R$ 2.800,00</span>
+<button class="text-secondary text-[11px] font-bold hover:underline">DETALHES</button>
+</div>
+</div>
+</div>
+<button class="w-full mt-4 py-2 text-[12px] font-bold text-on-surface-variant hover:text-secondary transition-colors border-t border-outline-variant pt-4">VER TODOS OS VENCIMENTOS</button>
+</div>
+<!-- Revenue Health Card -->
+<div class="bg-secondary-container rounded-xl p-margin-sm text-on-secondary-container shadow-lg relative overflow-hidden group">
+<div class="relative z-10">
+<h4 class="font-headline-sm text-headline-sm mb-2">Saúde da Receita</h4>
+<p class="text-[13px] opacity-90 mb-4">A projeção de MRR para o próximo trimestre é de <span class="font-bold">+8.4%</span> baseada nas renovações atuais.</p>
+<div class="flex items-center gap-2">
+<div class="h-10 w-10 rounded-full bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<span class="font-bold text-headline-md">R$ 266k</span>
+</div>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-10 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px]">analytics</span>
+</div>
+</div>
+<!-- Quick Actions Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-margin-sm">
+<h4 class="font-label-md text-label-md uppercase text-on-surface-variant mb-4 tracking-wider">Ações Rápidas</h4>
+<div class="grid grid-cols-2 gap-2">
+<button class="flex flex-col items-center justify-center gap-2 p-3 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-secondary">file_download</span>
+<span class="text-[10px] font-bold uppercase">Relatórios</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-3 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-secondary">mail</span>
+<span class="text-[10px] font-bold uppercase">Lembretes</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-3 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-secondary">history_edu</span>
+<span class="text-[10px] font-bold uppercase">Modelos</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-3 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-secondary">account_balance</span>
+<span class="text-[10px] font-bold uppercase">Faturas</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (for quick access) -->
+<button class="fixed bottom-8 right-8 h-14 w-14 bg-secondary text-on-secondary rounded-full flex items-center justify-center shadow-xl hover:scale-110 active:scale-95 transition-all z-20 md:hidden">
+<span class="material-symbols-outlined">add</span>
+</button>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../../Back End/supabase.js"></script>
+<script src="../../Back End/db.js"></script>
+<script src="../shared/js/sidebar.js"></script>
+<script src="app.js"></script>
+</body></html>

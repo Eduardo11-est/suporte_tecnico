@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Configurações - TechSupport Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#271901",
+                    "on-tertiary-container": "#98805d",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-surface": "#191c1e",
+                    "primary-fixed": "#dae2fd",
+                    "outline-variant": "#c6c6cd",
+                    "primary-fixed-dim": "#bec6e0",
+                    "inverse-primary": "#bec6e0",
+                    "surface-tint": "#565e74",
+                    "surface-bright": "#f7f9fb",
+                    "on-background": "#191c1e",
+                    "surface-dim": "#d8dadc",
+                    "on-secondary-fixed": "#001a42",
+                    "on-error": "#ffffff",
+                    "surface-container": "#eceef0",
+                    "on-primary": "#ffffff",
+                    "primary": "#000000",
+                    "tertiary-fixed": "#fcdeb5",
+                    "surface": "#f7f9fb",
+                    "secondary": "#0058be",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "primary-container": "#131b2e",
+                    "outline": "#76777d",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "on-secondary-container": "#fefcff",
+                    "tertiary": "#000000",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-primary-container": "#7c839b",
+                    "secondary-container": "#2170e4",
+                    "error": "#ba1a1a",
+                    "background": "#f7f9fb",
+                    "surface-container-low": "#f2f4f6",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#271901",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "on-secondary-fixed-variant": "#004395",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-primary-fixed": "#131b2e",
+                    "on-surface-variant": "#45464d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sidebar-width": "260px",
+                    "base": "4px",
+                    "margin-lg": "32px",
+                    "container-max": "1440px",
+                    "margin-md": "24px",
+                    "gutter": "24px",
+                    "margin-sm": "16px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "mono-sm": ["JetBrains Mono"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "mono-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- SIDE NAVIGATION -->
+<div id="sidebar-container"></div>
+<!-- MAIN CANVAS -->
+<main class="flex-1 flex flex-col min-w-0 h-full overflow-hidden">
+<!-- TOP NAV BAR -->
+<header class="w-full h-16 sticky top-0 z-40 flex justify-between items-center px-margin-md bg-surface-container-lowest shadow-sm border-b border-outline-variant">
+<div class="flex items-center gap-4 flex-1">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Configurações</span>
+<div class="hidden md:flex relative max-w-md w-full ml-4">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container rounded-lg border-none focus:ring-2 focus:ring-secondary text-body-md" placeholder="Pesquisar configurações..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button onclick="window.location.href='../index.html'" class="text-on-surface-variant hover:bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant text-label-md font-bold flex items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+Voltar ao Dashboard
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-1"></div>
+<button class="w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition-all">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-3">
+<img alt="Technician Profile" class="w-10 h-10 rounded-full border border-outline-variant object-cover" data-alt="A professional headshot of a focused support engineer in a modern office environment. The image features soft, high-key lighting with a clean, tech-oriented aesthetic. The colors are predominantly cool blues and neutral grays, reflecting a professional and integrated technical support application environment. The background shows a blurred high-tech workspace with monitors and servers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD2jtOj2cj5On34esop0xpxK4Klq2E47I4P0sDY40baJlu5M2CNGLcXk2iY4WBWQhJDPXjW0MAXIx2Dx2WBaA55aET2tdIBs8ZEXOHQnWEfvpgw1KSIPSvH6D6wPhRn7pHvyvPjnjZkJH-BHP-rpOwq1WphLg-fYm7qX4DtUsgWpWzCXbt6mTpV5FN4G54EuS-X03dfktE1R-64U27p7TDvRGJ7Wq6TuB6tMbXR_oBOUPbKxIDJgLPvZGFDEq0eeoZJieNQalqMVc"/>
+<div class="hidden lg:block">
+<p class="font-label-md text-label-md text-on-surface">Ricardo Mendes</p>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold">Engenheiro Sênior</p>
+</div>
+</div>
+</div>
+</header>
+<!-- SETTINGS CONTENT -->
+<div class="flex-1 overflow-y-auto p-margin-md max-w-[1440px] w-full mx-auto">
+<div class="flex flex-col md:flex-row gap-gutter">
+<!-- Internal Category Sidebar -->
+<aside class="w-full md:w-64 flex flex-col gap-1">
+<button class="settings-tab flex items-center gap-3 px-4 py-3 rounded-lg bg-secondary-container text-on-secondary-container font-semibold transition-all" id="tab-perfil" onclick="switchTab('perfil')">
+<span class="material-symbols-outlined">person</span>
+<span>Perfil do Usuário</span>
+</button>
+<button class="settings-tab flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container transition-all" id="tab-sistema" onclick="switchTab('sistema')">
+<span class="material-symbols-outlined">settings_suggest</span>
+<span>Preferências do Sistema</span>
+</button>
+<button class="settings-tab flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container transition-all" id="tab-notificacoes" onclick="switchTab('notificacoes')">
+<span class="material-symbols-outlined">notifications_active</span>
+<span>Notificações</span>
+</button>
+<button class="settings-tab flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container transition-all" id="tab-seguranca" onclick="switchTab('seguranca')">
+<span class="material-symbols-outlined">shield</span>
+<span>Segurança</span>
+</button>
+</aside>
+<!-- Content Panes -->
+<div class="flex-1">
+<form class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm" id="settings-form" onsubmit="return false;">
+<!-- Header Info -->
+<div class="p-6 border-b border-outline-variant bg-surface-container-low">
+<h2 class="font-headline-sm text-headline-sm text-on-surface" id="current-pane-title">Perfil do Usuário</h2>
+<p class="text-on-surface-variant mt-1" id="current-pane-desc">Gerencie suas informações pessoais e cargo na plataforma.</p>
+</div>
+<!-- Perfil Pane -->
+<div class="settings-pane visible-pane p-8 space-y-8" id="pane-perfil">
+<div class="flex items-center gap-8">
+<div class="relative group">
+<img class="w-32 h-32 rounded-full border-4 border-surface shadow-md object-cover" data-alt="A professional headshot of a focused support engineer in a modern office environment. The image features soft, high-key lighting with a clean, tech-oriented aesthetic. The colors are predominantly cool blues and neutral grays, reflecting a professional and integrated technical support application environment. The background shows a blurred high-tech workspace with monitors and servers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFUrgCOIah9bvqbifPvMuTlDfISijz8oUnQ-OWNN7PaD-qfaIhB4RgK74mB173_HHOgKPSDJZ3LuH67WQDBDv9aT4lWnkivMG2dPGXa8-qKBNbFrxd-gHW74PGjcBhUirOszXjqfE--1e6DusDPo8Sn-36yD2b3G1UqWTBkyDyQrudK-CLKXe60RM0LWwOGq_sR01thtepe9QNQ50Ysj-9G9nZyZ_2L4P7sJpkneO6Vw0M_kGD8Pxcg8UZxiZmGRDDLoDPrGymvLQ"/>
+<button class="absolute bottom-1 right-1 w-8 h-8 bg-secondary text-white rounded-full flex items-center justify-center border-2 border-surface shadow hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div>
+<h3 class="font-headline-sm">Foto de Perfil</h3>
+<p class="text-on-surface-variant text-body-md">Formatos aceitos: JPG, PNG. Tamanho máximo 2MB.</p>
+<div class="flex gap-2 mt-3">
+<button class="px-4 py-2 bg-secondary text-white rounded font-semibold text-body-md hover:bg-secondary-container transition-colors" type="button">Upload</button>
+<button class="px-4 py-2 border border-outline text-on-surface rounded font-semibold text-body-md hover:bg-surface-container transition-colors" type="button">Remover</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Nome Completo</label>
+<input class="w-full px-4 py-3 rounded bg-surface border border-outline-variant focus:ring-2 focus:ring-secondary transition-all outline-none" type="text" value="Ricardo Mendes"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Email Profissional</label>
+<input class="w-full px-4 py-3 rounded bg-surface border border-outline-variant focus:ring-2 focus:ring-secondary transition-all outline-none" type="email" value="ricardo.mendes@techsupport.pro"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Cargo / Role</label>
+<div class="relative">
+<select class="w-full px-4 py-3 rounded bg-surface-container-high border border-outline-variant text-on-surface-variant cursor-not-allowed appearance-none" disabled="">
+<option>Engenheiro Sênior</option>
+<option>Suporte Nível 1</option>
+<option>Suporte Nível 2</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant/40">lock</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sistema Pane -->
+<div class="settings-pane hidden-pane p-8 space-y-8" id="pane-sistema">
+<div class="flex items-center justify-between p-4 bg-surface rounded-lg border border-outline-variant">
+<div>
+<h3 class="font-bold">Modo Escuro</h3>
+<p class="text-on-surface-variant text-body-md">Ajustar a interface para ambientes de baixa luminosidade.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Idioma do Sistema</label>
+<select class="w-full px-4 py-3 rounded bg-surface border border-outline-variant focus:ring-2 focus:ring-secondary transition-all outline-none">
+<option selected="">Português (Brasil)</option>
+<option>English (US)</option>
+<option>Español</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Fuso Horário</label>
+<select class="w-full px-4 py-3 rounded bg-surface border border-outline-variant focus:ring-2 focus:ring-secondary transition-all outline-none">
+<option selected="">(GMT-03:00) São Paulo</option>
+<option>(GMT-05:00) New York</option>
+<option>(GMT+00:00) London</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Notificações Pane -->
+<div class="settings-pane hidden-pane p-8 space-y-6" id="pane-notificacoes">
+<h3 class="font-headline-sm text-on-surface mb-4">Alertas por Email</h3>
+<div class="space-y-4">
+<label class="flex items-start gap-3 p-4 hover:bg-surface-container transition-colors rounded-lg cursor-pointer group">
+<input checked="" class="mt-1 w-5 h-5 text-secondary border-outline-variant rounded focus:ring-secondary" type="checkbox"/>
+<div>
+<p class="font-semibold group-hover:text-secondary transition-colors">Novos Tickets Criados</p>
+<p class="text-on-surface-variant text-body-md">Receba um alerta instantâneo quando um ticket for atribuído à sua fila.</p>
+</div>
+</label>
+<label class="flex items-start gap-3 p-4 hover:bg-surface-container transition-colors rounded-lg cursor-pointer group">
+<input checked="" class="mt-1 w-5 h-5 text-secondary border-outline-variant rounded focus:ring-secondary" type="checkbox"/>
+<div>
+<p class="font-semibold group-hover:text-secondary transition-colors">Mudanças de Prioridade</p>
+<p class="text-on-surface-variant text-body-md">Notificar quando a prioridade de um ticket ativo for elevada.</p>
+</div>
+</label>
+<label class="flex items-start gap-3 p-4 hover:bg-surface-container transition-colors rounded-lg cursor-pointer group">
+<input class="mt-1 w-5 h-5 text-secondary border-outline-variant rounded focus:ring-secondary" type="checkbox"/>
+<div>
+<p class="font-semibold group-hover:text-secondary transition-colors">Relatórios Semanais</p>
+<p class="text-on-surface-variant text-body-md">Resumo consolidado do desempenho e SLAs todas as segundas-feiras.</p>
+</div>
+</label>
+</div>
+</div>
+<!-- Segurança Pane -->
+<div class="settings-pane hidden-pane p-8 space-y-8" id="pane-seguranca">
+<div class="space-y-6">
+<h3 class="font-headline-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">lock</span>
+                                        Alterar Senha
+                                    </h3>
+<div class="grid grid-cols-1 gap-4 max-w-md">
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Senha Atual</label>
+<input class="w-full px-4 py-3 rounded bg-surface border border-outline-variant focus:ring-2 focus:ring-secondary outline-none" placeholder="••••••••" type="password"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Nova Senha</label>
+<input class="w-full px-4 py-3 rounded bg-surface border border-outline-variant focus:ring-2 focus:ring-secondary outline-none" placeholder="••••••••" type="password"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant">Confirmar Nova Senha</label>
+<input class="w-full px-4 py-3 rounded bg-surface border border-outline-variant focus:ring-2 focus:ring-secondary outline-none" placeholder="••••••••" type="password"/>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant pt-8">
+<div class="flex items-center justify-between p-4 bg-tertiary-container/5 rounded-lg border-2 border-dashed border-secondary/20">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary text-3xl">verified_user</span>
+<div>
+<h3 class="font-bold">Autenticação em Dois Fatores (2FA)</h3>
+<p class="text-on-surface-variant text-body-md">Adicione uma camada extra de segurança à sua conta administrativa.</p>
+</div>
+</div>
+<button class="px-6 py-2 bg-secondary text-white rounded font-bold hover:bg-secondary-container transition-all" type="button">Configurar</button>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="p-6 border-t border-outline-variant flex justify-end items-center gap-4 bg-surface-container-low">
+<button class="px-6 py-3 border border-outline text-on-surface font-semibold rounded hover:bg-surface transition-all" type="reset">
+                                    Resetar
+                                </button>
+<button class="px-8 py-3 bg-secondary text-white font-bold rounded shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all" onclick="saveSettings()" type="button">
+                                    Salvar Alterações
+                                </button>
+</div>
+</form>
+<!-- Feedback Toast (JS Controlled) -->
+<div class="fixed bottom-8 right-8 bg-on-background text-background px-6 py-4 rounded-lg shadow-2xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-500 pointer-events-none" id="save-toast">
+<span class="material-symbols-outlined text-green-400">check_circle</span>
+<span class="font-semibold">Configurações salvas com sucesso!</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../../Back End/supabase.js"></script>
+<script src="../../Back End/db.js"></script>
+<script src="../shared/js/sidebar.js"></script>
+<script src="app.js"></script>
+</body></html>

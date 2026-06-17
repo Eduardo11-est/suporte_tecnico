@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-container": "#7c839b",
+                        "surface-bright": "#f7f9fb",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#001a42",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "on-tertiary-container": "#98805d",
+                        "on-primary-fixed": "#131b2e",
+                        "primary-container": "#131b2e",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary": "#ffffff",
+                        "secondary": "#0058be",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#45464d",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#565e74",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "primary": "#000000",
+                        "on-secondary-container": "#fefcff",
+                        "tertiary-fixed": "#fcdeb5",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-container": "#271901",
+                        "surface-container-high": "#e6e8ea",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "secondary-container": "#2170e4",
+                        "primary-fixed": "#dae2fd",
+                        "outline-variant": "#c6c6cd",
+                        "surface-dim": "#d8dadc",
+                        "background": "#f7f9fb",
+                        "surface": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-variant": "#e0e3e5",
+                        "inverse-primary": "#bec6e0",
+                        "surface-container": "#eceef0",
+                        "outline": "#76777d",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#271901",
+                        "tertiary": "#000000",
+                        "on-background": "#191c1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1440px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "margin-sm": "16px",
+                        "margin-md": "24px",
+                        "sidebar-width": "260px",
+                        "margin-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "mono-sm": ["JetBrains Mono"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "mono-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex">
+<div id="sidebar-container"></div>
+<!-- Main Workspace -->
+<div class="flex-1 ml-[260px] flex flex-col min-h-screen">
+<!-- TopNavBar (Shared Component Identity) -->
+<header class="h-16 bg-surface border-b border-outline-variant flex items-center justify-between px-gutter sticky top-0 z-40">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-2 text-body-md focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all" placeholder="Pesquisar chamados, usuários ou documentos..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+<button onclick="window.location.href='../index.html'" class="text-on-surface-variant hover:bg-surface-container-high transition-colors px-3 py-1.5 rounded-lg border border-outline-variant text-label-md font-bold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+Voltar ao Dashboard
+</button>
+<div class="h-8 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right">
+<p class="font-label-md text-on-surface leading-tight">Engenheiro de Suporte</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Online</p>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-secondary overflow-hidden">
+<img alt="Support Engineer Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a friendly support engineer in a modern office setting. The lighting is soft and professional, emphasizing a trustworthy and helpful personality. The background is slightly blurred showing a contemporary tech workspace with soft blue and gray tones consistent with a corporate technical environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGAaOahUpziXem7wCjaks2E4De8f9jKFHV46bGE5O7qn_8IYXuSdXNwcotmcGe9Jae8SNzY8wX4vYb2UDuauofFNuk2fBd7IrN6fvFDnd4Y2aFlUVDsrZPLCNpNEQUUo0YMO3fjUO0xaK7w7PPoA41upIx04Jh0WDB61cicyejdq0GJNjFEKRbc7oQGfF_vuOi-JEYt22ZNkecdiVpDXQqYHv3zAi7Crr5a69YKsbbdB78ajA1ntHcCPePF59U7m25UP6ZA6RNhtQ"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<main class="flex-1 p-gutter overflow-y-auto">
+<div class="max-w-4xl mx-auto">
+<!-- Page Header -->
+<div class="mb-8">
+<nav class="flex items-center gap-2 text-on-surface-variant text-label-md mb-2">
+<a class="hover:text-secondary" href="#">Dashboard</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-secondary" href="#">Chamados</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Novo Chamado</span>
+</nav>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Abrir Novo Chamado</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Preencha as informações abaixo para iniciar uma solicitação de assistência técnica.</p>
+</div>
+<!-- Form Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden mb-12">
+<form class="p-8 space-y-8" id="new-ticket-form">
+<!-- Section: Basic Info -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="md:col-span-2">
+<label class="block font-label-md text-on-surface mb-2" for="subject">Assunto do Chamado</label>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-4 py-3 text-body-md focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all" id="subject" name="subject" placeholder="Ex: Problema de conexão com a rede interna" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-on-surface mb-2" for="category">Categoria</label>
+<div class="relative">
+<select class="w-full bg-white border border-outline-variant rounded-lg px-4 py-3 text-body-md focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all appearance-none" id="category" name="category" required="">
+<option disabled="" selected="" value="">Selecione a categoria</option>
+<option value="it">Informática / TI</option>
+<option value="electrical">Elétrica</option>
+<option value="civil">Predial / Civil</option>
+<option value="security">Segurança Eletrônica</option>
+<option value="telecom">Telecomunicações</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-on-surface mb-2" for="priority">Prioridade</label>
+<div class="relative">
+<select class="w-full bg-white border border-outline-variant rounded-lg px-4 py-3 text-body-md focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all appearance-none" id="priority" name="priority" required="">
+<option disabled="" selected="" value="">Selecione a prioridade</option>
+<option value="low">Baixa</option>
+<option value="medium">Média</option>
+<option value="high">Alta</option>
+<option value="critical">Crítica</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Section: Description & Location -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="md:col-span-2">
+<label class="block font-label-md text-on-surface mb-2" for="description">Descrição Detalhada do Problema</label>
+<textarea class="w-full bg-white border border-outline-variant rounded-lg px-4 py-3 text-body-md focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all resize-none" id="description" name="description" placeholder="Descreva o problema com o máximo de detalhes possível para agilizar o atendimento..." required="" rows="5"></textarea>
+</div>
+<div class="flex flex-col">
+<label class="block font-label-md text-on-surface mb-2" for="location">Localização / Setor</label>
+<input class="w-full bg-white border border-outline-variant rounded-lg px-4 py-3 text-body-md focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all mb-4" id="location" name="location" placeholder="Ex: Bloco A, Sala 202" required="" type="text"/>
+<div class="mt-auto bg-surface-container border border-outline-variant/50 rounded-lg p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">info</span>
+<span class="font-label-md text-on-surface">Dica Técnica</span>
+</div>
+<p class="text-[12px] text-on-surface-variant leading-relaxed">
+                                        Anexar fotos do problema ajuda nossos técnicos a diagnosticar a falha antes mesmo de chegarem ao local.
+                                    </p>
+</div>
+</div>
+</div>
+<!-- Section: Attachments -->
+<div>
+<label class="block font-label-md text-on-surface mb-2">Anexos (Fotos ou Documentos)</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-10 flex flex-col items-center justify-center bg-surface-container-low hover:bg-surface-container-high transition-all cursor-pointer group" id="drop-zone">
+<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-[32px]">upload_file</span>
+</div>
+<p class="font-body-md text-on-surface font-semibold">Clique para fazer upload ou arraste e solte</p>
+<p class="text-label-md text-on-surface-variant mt-1">PNG, JPG ou PDF (Máx. 10MB)</p>
+<input class="hidden" id="file-upload" multiple="" type="file"/>
+</div>
+<!-- Preview Area (Hidden by default) -->
+<div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4 hidden" id="file-previews">
+<!-- Previews will be injected here via JS -->
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="flex flex-col sm:flex-row items-center justify-end gap-4 pt-6 border-t border-outline-variant">
+<button class="w-full sm:w-auto px-8 py-3 border border-outline-variant text-on-surface-variant font-semibold rounded-lg hover:bg-surface-container-highest transition-colors font-body-md" type="button">
+                                Cancelar
+                            </button>
+<button class="w-full sm:w-auto px-10 py-3 bg-secondary text-white font-semibold rounded-lg hover:bg-secondary/90 shadow-md hover:shadow-lg transition-all font-body-md flex items-center justify-center gap-2" type="submit">
+<span class="material-symbols-outlined text-[20px]">send</span>
+                                Criar Chamado
+                            </button>
+</div>
+</form>
+</div>
+<!-- Recent Tickets / Context Sidebar (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="bg-surface-container-low border border-outline-variant p-5 rounded-xl">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-secondary">history</span>
+<h3 class="font-headline-sm text-[16px]">Meus Últimos Chamados</h3>
+</div>
+<ul class="space-y-3">
+<li class="flex items-center justify-between p-2 bg-white rounded border border-outline-variant/30">
+<span class="text-body-md truncate pr-2">Impressora L3150 Offline</span>
+<span class="text-[10px] bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full font-bold">EM ANDAMENTO</span>
+</li>
+<li class="flex items-center justify-between p-2 bg-white rounded border border-outline-variant/30">
+<span class="text-body-md truncate pr-2">Troca de lâmpada Sala 12</span>
+<span class="text-[10px] bg-green-100 text-green-800 px-2 py-0.5 rounded-full font-bold">CONCLUÍDO</span>
+</li>
+</ul>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-5 rounded-xl">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-secondary">verified_user</span>
+<h3 class="font-headline-sm text-[16px]">SLA Estimado</h3>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="text-headline-md text-primary">04h</p>
+<p class="text-label-md text-on-surface-variant">Resposta Inicial</p>
+</div>
+<div>
+<p class="text-headline-md text-primary">48h</p>
+<p class="text-label-md text-on-surface-variant">Resolução Típica</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-5 rounded-xl flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-on-surface-variant/40 text-[48px] mb-2">support_agent</span>
+<p class="font-body-md font-semibold text-on-surface">Precisa de Ajuda Imediata?</p>
+<a class="text-secondary font-bold hover:underline text-body-md" href="tel:0800123456">Ligar para Ramal 4004</a>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../../Back End/supabase.js"></script>
+<script src="../../Back End/db.js"></script>
+<script src="../shared/js/sidebar.js"></script>
+<script src="app.js"></script>
+</body></html>

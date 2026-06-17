@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Agilize Tech - Gestão de Chamados</title>
+    <meta name="description" content="Gestão completa de chamados de suporte técnico - Agilize Tech"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#131b2e",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary-fixed": "#dae2fd",
+                        "surface-container": "#eceef0",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e0e3e5",
+                        "primary-fixed-dim": "#bec6e0",
+                        "outline-variant": "#c6c6cd",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#271901",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary": "#0058be",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#001a42",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#fcdeb5",
+                        "primary": "#000000",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "surface": "#f7f9fb",
+                        "on-primary-fixed": "#131b2e",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "inverse-surface": "#2d3133",
+                        "outline": "#76777d",
+                        "background": "#f7f9fb",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "tertiary": "#000000",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#98805d",
+                        "on-surface-variant": "#45464d",
+                        "surface-container-low": "#f2f4f6",
+                        "on-surface": "#191c1e",
+                        "secondary-container": "#2170e4",
+                        "on-secondary-container": "#fefcff",
+                        "on-background": "#191c1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1440px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "margin-sm": "16px",
+                        "margin-md": "24px",
+                        "sidebar-width": "260px",
+                        "margin-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "mono-sm": ["JetBrains Mono"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "mono-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex overflow-hidden h-screen">
+
+<div id="sidebar-container"></div>
+
+<!-- Main Workspace -->
+<div class="flex-1 ml-[260px] flex flex-col h-screen overflow-y-auto">
+    <!-- TopNavBar -->
+    <header class="flex justify-between items-center w-full px-margin-lg sticky top-0 z-40 bg-surface h-16 border-b border-outline-variant">
+        <div class="flex items-center gap-6 flex-1">
+            <div class="relative w-full max-w-md">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+                <input id="search-input" class="w-full bg-surface-container-low border-none rounded-xl pl-10 pr-4 py-2 text-body-md focus:ring-2 focus:ring-secondary transition-all" placeholder="Pesquisar chamados por ID, assunto ou cliente..." type="text"/>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <button onclick="window.location.href='../novo_chamado_suporte_t_cnico/index.html'" class="bg-secondary text-on-secondary px-4 py-2 rounded-lg font-label-md flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all shadow-sm">
+                <span class="material-symbols-outlined text-[18px]">add</span>
+                + Novo Chamado
+            </button>
+            <div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
+            <button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors relative">
+                <span class="material-symbols-outlined">notifications</span>
+                <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+            </button>
+            <div class="flex items-center gap-3 ml-2 pl-2 border-l border-outline-variant">
+                <div class="text-right hidden lg:block">
+                    <p class="font-label-md text-on-surface leading-none" id="header-username">Usuário</p>
+                    <p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Online</p>
+                </div>
+                <div class="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-on-secondary font-bold text-sm" id="header-avatar">U</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content Canvas -->
+    <main class="flex-1 p-gutter overflow-y-auto">
+        <div class="max-w-container-max mx-auto space-y-6">
+
+            <!-- Page Header -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Gestão de Chamados</h1>
+                    <p class="font-body-md text-body-md text-on-surface-variant mt-1">Todos os chamados de suporte técnico centralizados em um único painel.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="btn-export" class="px-4 py-2 border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-md flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[16px]">download</span>
+                        Exportar
+                    </button>
+                    <button id="btn-refresh" class="px-4 py-2 border border-outline-variant rounded-lg text-secondary hover:bg-secondary/10 transition-colors font-label-md flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[16px]">sync</span>
+                        Sincronizar
+                    </button>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 flex items-center gap-4 hover:shadow-sm transition-all">
+                    <div class="w-11 h-11 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary flex-shrink-0">
+                        <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">inbox</span>
+                    </div>
+                    <div>
+                        <p class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant">Total Abertos</p>
+                        <h3 id="kpi-open" class="text-2xl font-bold text-secondary mt-0.5">0</h3>
+                    </div>
+                </div>
+                <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 flex items-center gap-4 hover:shadow-sm transition-all">
+                    <div class="w-11 h-11 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600 flex-shrink-0">
+                        <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">engineering</span>
+                    </div>
+                    <div>
+                        <p class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant">Em Progresso</p>
+                        <h3 id="kpi-progress" class="text-2xl font-bold text-amber-600 mt-0.5">0</h3>
+                    </div>
+                </div>
+                <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 flex items-center gap-4 hover:shadow-sm transition-all">
+                    <div class="w-11 h-11 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-600 flex-shrink-0">
+                        <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+                    </div>
+                    <div>
+                        <p class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant">Aguard. Peças</p>
+                        <h3 id="kpi-waiting" class="text-2xl font-bold text-orange-600 mt-0.5">0</h3>
+                    </div>
+                </div>
+                <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 flex items-center gap-4 hover:shadow-sm transition-all">
+                    <div class="w-11 h-11 rounded-xl bg-green-500/10 flex items-center justify-center text-green-600 flex-shrink-0">
+                        <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    </div>
+                    <div>
+                        <p class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant">Resolvidos</p>
+                        <h3 id="kpi-resolved" class="text-2xl font-bold text-green-600 mt-0.5">0</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-wrap items-center gap-3">
+                <span class="text-label-md text-on-surface-variant font-bold">FILTRAR:</span>
+                <div class="flex flex-wrap gap-2" id="category-filters">
+                    <button data-filter="todos" class="filter-pill px-4 py-1.5 rounded-full bg-secondary text-on-secondary font-label-md transition-all text-xs">Todos</button>
+                    <button data-filter="it" class="filter-pill px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:bg-secondary/10 hover:text-secondary font-label-md transition-all border border-outline-variant text-xs">Informática/TI</button>
+                    <button data-filter="elétrica" class="filter-pill px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:bg-secondary/10 hover:text-secondary font-label-md transition-all border border-outline-variant text-xs">Elétrica</button>
+                    <button data-filter="predial" class="filter-pill px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:bg-secondary/10 hover:text-secondary font-label-md transition-all border border-outline-variant text-xs">Predial/Civil</button>
+                    <button data-filter="segurança" class="filter-pill px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:bg-secondary/10 hover:text-secondary font-label-md transition-all border border-outline-variant text-xs">Segurança</button>
+                    <button data-filter="telecom" class="filter-pill px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:bg-secondary/10 hover:text-secondary font-label-md transition-all border border-outline-variant text-xs">Telecom</button>
+                </div>
+                <div class="ml-auto flex items-center gap-2">
+                    <select id="status-filter" class="bg-surface-container-low border border-outline-variant rounded-lg px-3 py-1.5 text-xs font-label-md text-on-surface focus:ring-2 focus:ring-secondary">
+                        <option value="todos">Todos os Status</option>
+                        <option value="pending">Pendente</option>
+                        <option value="in-progress">Em Progresso</option>
+                        <option value="waiting-parts">Aguardando Peças</option>
+                        <option value="resolved">Resolvido</option>
+                    </select>
+                    <select id="priority-filter" class="bg-surface-container-low border border-outline-variant rounded-lg px-3 py-1.5 text-xs font-label-md text-on-surface focus:ring-2 focus:ring-secondary">
+                        <option value="todos">Todas Prioridades</option>
+                        <option value="critical">Crítica</option>
+                        <option value="high">Alta</option>
+                        <option value="medium">Média</option>
+                        <option value="low">Baixa</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Tickets Table -->
+            <div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+                <div class="flex items-center justify-between px-6 py-4 border-b border-outline-variant">
+                    <h2 class="font-headline-sm text-headline-sm text-on-surface">Lista de Chamados</h2>
+                    <span id="tickets-count" class="text-xs font-bold text-on-surface-variant bg-surface-container px-3 py-1 rounded-full">0 chamados</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-surface-container-low border-b border-outline-variant">
+                            <tr>
+                                <th class="px-6 py-3 font-label-md text-on-surface-variant uppercase tracking-wider text-xs">ID</th>
+                                <th class="px-6 py-3 font-label-md text-on-surface-variant uppercase tracking-wider text-xs">Assunto / Cliente</th>
+                                <th class="px-6 py-3 font-label-md text-on-surface-variant uppercase tracking-wider text-xs">Categoria</th>
+                                <th class="px-6 py-3 font-label-md text-on-surface-variant uppercase tracking-wider text-xs text-center">Prioridade</th>
+                                <th class="px-6 py-3 font-label-md text-on-surface-variant uppercase tracking-wider text-xs">Status</th>
+                                <th class="px-6 py-3 font-label-md text-on-surface-variant uppercase tracking-wider text-xs">Abertura</th>
+                                <th class="px-6 py-3 font-label-md text-on-surface-variant uppercase tracking-wider text-xs text-right">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tickets-tbody" class="divide-y divide-outline-variant">
+                            <!-- Populated by app.js -->
+                            <tr>
+                                <td colspan="7" class="px-6 py-12 text-center">
+                                    <div class="flex flex-col items-center gap-3">
+                                        <span class="material-symbols-outlined text-4xl text-on-surface-variant opacity-40">sync</span>
+                                        <p class="text-on-surface-variant font-medium">Carregando chamados...</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<!-- Modal de Novo Chamado Rápido -->
+<div id="modal-assign" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-surface rounded-2xl shadow-2xl w-full max-w-md p-6">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="font-headline-sm text-on-surface">Atribuir Técnico</h3>
+            <button id="modal-close" class="p-2 hover:bg-surface-container-high rounded-lg transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <p class="text-body-md text-on-surface-variant mb-4">Selecione o técnico responsável pelo chamado <strong id="modal-ticket-id"></strong>:</p>
+        <select id="modal-engineer" class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 text-body-md mb-4 focus:ring-2 focus:ring-secondary">
+            <option value="Marcos Andrade">Marcos Andrade - Sênior - TI</option>
+            <option value="Ana Martins">Ana Martins - Pleno - Elétrica</option>
+            <option value="Ricardo Lima">Ricardo Lima - Pleno - Civil</option>
+            <option value="Felipe Borges">Felipe Borges - Junior - Segurança</option>
+        </select>
+        <div class="flex gap-3">
+            <button id="modal-cancel" class="flex-1 py-2.5 border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-md">Cancelar</button>
+            <button id="modal-confirm" class="flex-1 py-2.5 bg-secondary text-on-secondary rounded-lg hover:opacity-90 transition-all font-label-md">Atribuir</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../../Back End/supabase.js"></script>
+<script src="../../Back End/db.js"></script>
+<script src="../shared/js/sidebar.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

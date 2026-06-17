@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Login - Agilize Tech</title>
+    <meta name="description" content="Acesse o console de suporte técnico Agilize Tech"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css"/>
+    <!-- Carregar bibliotecas de Banco de Dados / Supabase via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../Back End/supabase.js"></script>
+    <script src="../../Back End/db.js"></script>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4" style="background: linear-gradient(135deg, #060d1f 0%, #0a1628 40%, #081122 70%, #050c1a 100%); font-family: 'Inter', sans-serif;">
+
+    <!-- Background animado com partículas -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="particle" style="left:10%; animation-delay:0s;"></div>
+        <div class="particle" style="left:25%; animation-delay:2s;"></div>
+        <div class="particle" style="left:40%; animation-delay:4s;"></div>
+        <div class="particle" style="left:55%; animation-delay:1s;"></div>
+        <div class="particle" style="left:70%; animation-delay:3s;"></div>
+        <div class="particle" style="left:85%; animation-delay:0.5s;"></div>
+        <!-- Orbs de fundo -->
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <!-- Grid decorativo -->
+        <div class="grid-bg"></div>
+    </div>
+
+    <!-- Card de Login -->
+    <main class="login-card w-full max-w-md z-10 relative">
+        <!-- Cabeçalho com Logo -->
+        <header class="text-center mb-8">
+            <!-- Logo animada -->
+            <div class="logo-container mx-auto mb-5" id="logo-anim">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                    <defs>
+                        <linearGradient id="lgHex" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#0058BE"/>
+                            <stop offset="100%" stop-color="#00C4FF"/>
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <!-- Hexágono -->
+                    <polygon points="32,3 56,17 56,47 32,61 8,47 8,17" 
+                             fill="url(#lgHex)" filter="url(#glow)" opacity="0.95"/>
+                    <!-- Borda externa -->
+                    <polygon points="32,3 56,17 56,47 32,61 8,47 8,17" 
+                             fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                    <!-- Raio lightning bolt -->
+                    <path d="M37 10L20 35h13l-6 19 22-27h-13l5-17z" 
+                          fill="white" opacity="0.95"/>
+                </svg>
+                <!-- Anel de pulso -->
+                <div class="logo-ring"></div>
+                <div class="logo-ring logo-ring-2"></div>
+            </div>
+
+            <h1 class="text-3xl font-extrabold text-white tracking-tight leading-none">Agilize Tech</h1>
+            <p class="text-sm text-blue-300/60 mt-2 font-medium tracking-widest uppercase">Support Console</p>
+        </header>
+
+        <!-- Formulário -->
+        <form id="login-form" class="space-y-5">
+            <!-- Campo Email -->
+            <div class="form-group">
+                <label for="email" class="block text-xs font-bold uppercase tracking-widest text-blue-200/60 mb-2">E-mail Corporativo</label>
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xl">mail</span>
+                    <input type="email" id="email" required placeholder="seu@email.com"
+                        class="input-field w-full pl-11 pr-4 py-3.5 text-white placeholder-slate-500 text-sm rounded-xl transition-all"/>
+                </div>
+            </div>
+
+            <!-- Campo Senha -->
+            <div class="form-group">
+                <label for="password" class="block text-xs font-bold uppercase tracking-widest text-blue-200/60 mb-2">Senha de Acesso</label>
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xl">lock</span>
+                    <input type="password" id="password" required placeholder="••••••••"
+                        class="input-field w-full pl-11 pr-12 py-3.5 text-white placeholder-slate-500 text-sm rounded-xl transition-all"/>
+                    <button type="button" id="toggle-password"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition-colors p-1 rounded-lg hover:bg-white/10">
+                        <span class="material-symbols-outlined text-xl" id="eye-icon">visibility</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mensagem de Erro -->
+            <div id="error-message" class="hidden flex items-start gap-2 bg-red-950/40 border border-red-500/30 text-red-400 px-4 py-3 rounded-xl text-xs">
+                <span class="material-symbols-outlined text-sm mt-0.5 flex-shrink-0">error</span>
+                <span id="error-text">Credenciais inválidas. Verifique e tente novamente.</span>
+            </div>
+
+            <!-- Botão de Login -->
+            <button type="submit" id="submit-btn"
+                class="submit-btn w-full py-3.5 text-white font-bold rounded-xl transition-all text-sm flex items-center justify-center gap-2 mt-2">
+                <span id="btn-text">Acessar o Sistema</span>
+                <span class="material-symbols-outlined text-lg" id="btn-icon">arrow_forward</span>
+            </button>
+        </form>
+
+        <!-- Footer / Indicadores -->
+        <footer class="mt-8 pt-6 border-t border-white/5 space-y-3">
+            <div class="flex items-center justify-center gap-2">
+                <div id="db-indicator-dot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+                <span id="db-indicator-text" class="text-[11px] text-slate-400 font-medium">Sistema Operacional</span>
+            </div>
+            <div class="text-[10px] text-slate-600 text-center">
+                Credenciais: <span class="font-mono text-slate-500">admin@techsupport.com</span> / <span class="font-mono text-slate-500">admin123</span>
+            </div>
+        </footer>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
