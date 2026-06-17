@@ -25,7 +25,7 @@ O sistema foi refatorado seguindo o padrão arquitetural **Model-View-Controller
 
 ```
 suporte_tecnico/
-├── Back End/
+├── backend/
 │   ├── Models/
 │   │   └── Models.js         # Camada Model: manipulação de dados locais (LocalStorage) e queries Supabase
 │   ├── Views/
@@ -35,7 +35,7 @@ suporte_tecnico/
 │   ├── supabase.js           # Conector e inicializador do cliente Supabase
 │   └── db.js                 # Ponto de entrada (Facade) que expõe a API compatível 'window.TechSupportDB'
 │
-├── Front End/
+├── frontend/
 │   ├── login/                # Tela de Login e lógica de autenticação
 │   ├── chamados/             # Tabela e gerenciamento avançado de chamados
 │   ├── detalhes_do_chamado/  # Visualização de chamados e chat interativo
@@ -73,7 +73,7 @@ Como a aplicação é executada inteiramente no lado do cliente (Client-Side), e
 
 ### Opção 1: Usando Live Server (VS Code)
 1. Abra a pasta do projeto no VS Code.
-2. Clique com o botão direito no arquivo `Front End/login/index.html` ou `Front End/index.html` e selecione **Open with Live Server**.
+2. Clique com o botão direito no arquivo `frontend/login/index.html` ou `frontend/index.html` e selecione **Open with Live Server**.
 3. O projeto abrirá em `http://127.0.0.1:5500/`.
 
 ### Opção 2: Via Terminal (Python / NodeJS)
@@ -89,7 +89,7 @@ python -m http.server 8000
 npx http-server -p 8000
 ```
 
-Abra seu navegador no endereço: `http://localhost:8000/Front End/login/index.html`.
+Abra seu navegador no endereço: `http://localhost:8000/frontend/login/index.html`.
 
 ### Credenciais de Teste (Mock Local)
 *   **E-mail:** `admin@techsupport.com`

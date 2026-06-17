@@ -9,20 +9,20 @@
 
             // ─── Detectar prefix de navegação ─────────────────────────────────────
             // O servidor serve os arquivos a partir de "08 Suporte Tecnico"
-            // Páginas na raiz do Front End: /Front End/index.html        → prefix = "./"
-            // Páginas em subpastas:         /Front End/chamados/...      → prefix = "../"
+            // Páginas na raiz do frontend: /frontend/index.html        → prefix = "./"
+            // Páginas em subpastas:         /frontend/chamados/...      → prefix = "../"
             var rawPath = window.location.pathname;
 
             // Normaliza barras e remove query/hash
             var pathParts = rawPath.replace(/\\/g, '/').split('/').filter(function (p) { return p !== ''; });
-            // pathParts para raiz: ["Front End", "index.html"]        → 2 partes
-            // pathParts para sub:  ["Front End", "chamados", "index.html"] → 3+ partes
+            // pathParts para raiz: ["frontend", "index.html"]        → 2 partes
+            // pathParts para sub:  ["frontend", "chamados", "index.html"] → 3+ partes
 
-            // Se existir o segmento "Front End" e logo após "index.html" (sem pasta intermediária)
+            // Se existir o segmento "frontend" e logo após "index.html" (sem pasta intermediária)
             // OU se não houver pasta intermediária conhecida → é raiz
             var isRoot = false;
 
-            // Checar se é raiz verificando se o arquivo index.html está direto no "Front End"
+            // Checar se é raiz verificando se o arquivo index.html está direto no "frontend"
             if (pathParts.length <= 2) {
                 isRoot = true;
             } else if (pathParts.length === 2 && pathParts[1] === 'index.html') {
