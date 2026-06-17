@@ -198,6 +198,71 @@
                 });
             }
 
+            // ─── Atualizar Cabeçalho (Header Profile) Dinamicamente ──────────────
+            function updateHeaderProfile() {
+                try {
+                    if (!window.TechSupportDB || typeof window.TechSupportDB.getProfile !== 'function') return;
+                    var profile = window.TechSupportDB.getProfile();
+                    if (!profile) return;
+
+                    var header = document.querySelector('header');
+                    if (!header) return;
+
+                    // 1. Procurar elementos do nome do usuário no cabeçalho
+                    var nameEl = header.querySelector('#header-username');
+                    if (!nameEl) {
+                        var textEls = header.querySelectorAll('p, span');
+                        for (var i = 0; i < textEls.length; i++) {
+                            var text = textEls[i].textContent.trim();
+                            if (text === 'Ricardo Silva' || text === 'Ricardo Mendes' || text === 'Usuário') {
+                                nameEl = textEls[i];
+                                break;
+                            }
+                        }
+                    }
+                    if (nameEl) {
+                        nameEl.textContent = profile.name;
+                    }
+
+                    // 2. Procurar elementos de cargo do usuário no cabeçalho
+                    var roleEl = null;
+                    var textEls = header.querySelectorAll('p, span');
+                    for (var i = 0; i < textEls.length; i++) {
+                        var text = textEls[i].textContent.trim();
+                        if (text === 'Engenheiro de Suporte' || text === 'Técnico Nível 2' || text === 'Engenheiro Sênior' || text === 'Online' || text === 'ENGENHEIRO DE SUPORTE' || text === 'TÉCNICO NÍVEL 2' || text === 'ENGENHEIRO SÊNIOR') {
+                            roleEl = textEls[i];
+                            break;
+                        }
+                    }
+                    if (roleEl) {
+                        roleEl.textContent = profile.role;
+                    }
+
+                    // 3. Procurar imagem de perfil (avatar) no cabeçalho
+                    var avatarEl = header.querySelector('#header-avatar');
+                    var imgEl = header.querySelector('img[class*="rounded-full"], img[alt*="Avatar"], img[alt*="Profile"], img[alt*="Technician"]');
+                    
+                    if (profile.avatar) {
+                        if (imgEl) {
+                            imgEl.src = profile.avatar;
+                            if (avatarEl) {
+                                avatarEl.style.display = 'none';
+                                imgEl.style.display = '';
+                            }
+                        } else if (avatarEl) {
+                            // Se tiver a div fallback, tenta atualizar as iniciais
+                            avatarEl.textContent = profile.name.substring(0, 2).toUpperCase();
+                        }
+                    }
+                } catch (ex) {
+                    console.warn('[Agilize Tech Sidebar] Falha ao atualizar cabeçalho:', ex);
+                }
+            }
+
+            // Executar imediatamente e escutar atualizações
+            updateHeaderProfile();
+            window.addEventListener('techsupport_profile_updated', updateHeaderProfile);
+
         } catch (err) {
             console.error('[Agilize Tech Sidebar] Erro crítico:', err);
             // Fallback mínimo para não quebrar o layout

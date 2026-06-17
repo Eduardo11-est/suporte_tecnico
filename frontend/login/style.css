@@ -112,15 +112,26 @@
 
 /* Campos de input */
 .input-field {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(15, 23, 42, 0.7) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
     outline: none;
     transition: all 0.2s;
 }
 .input-field:focus {
-    border-color: rgba(0, 88, 190, 0.6);
-    box-shadow: 0 0 0 3px rgba(0, 88, 190, 0.15), 0 0 20px rgba(0, 88, 190, 0.05) inset;
-    background: rgba(10, 15, 30, 0.8);
+    border-color: rgba(0, 88, 190, 0.6) !important;
+    box-shadow: 0 0 0 3px rgba(0, 88, 190, 0.15), 0 0 20px rgba(0, 88, 190, 0.05) inset !important;
+    background: rgba(10, 15, 30, 0.8) !important;
+}
+
+/* Custom autocomplete / autofill override */
+.input-field:-webkit-autofill,
+.input-field:-webkit-autofill:hover, 
+.input-field:-webkit-autofill:focus, 
+.input-field:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #0f172a inset !important;
+    -webkit-text-fill-color: #ffffff !important;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 /* Botão de envio */

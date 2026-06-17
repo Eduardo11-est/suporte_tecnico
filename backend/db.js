@@ -24,6 +24,9 @@
         getSettings: () => window.TechSupportControllers.SettingsController.getSettings(),
         saveSettings: (settings) => window.TechSupportControllers.SettingsController.saveSettings(settings),
 
+        getProfile: () => window.TechSupportControllers.ProfileController.getProfile(),
+        saveProfile: (profile) => window.TechSupportControllers.ProfileController.saveProfile(profile),
+
         getFaq: () => window.TechSupportControllers.FaqController.getFaq(),
         saveFaq: (faq) => window.TechSupportControllers.FaqController.saveFaq(faq),
 

@@ -138,6 +138,12 @@
         }
     };
 
+    // ProfileController
+    const ProfileController = {
+        getProfile: () => window.TechSupportModels.ProfileModel.get(),
+        saveProfile: (profile) => window.TechSupportModels.ProfileModel.save(profile)
+    };
+
     // FaqController
     const FaqController = {
         getFaq: () => window.TechSupportModels.FaqModel.getAll(),
@@ -253,6 +259,7 @@
     // Exportar Controladores Globalmente para o MVC
     window.TechSupportControllers = {
         AuthController: AuthController,
+        ProfileController: ProfileController,
         CustomerController: CustomerController,
         ContractController: ContractController,
         TicketController: TicketController,

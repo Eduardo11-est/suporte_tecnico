@@ -198,6 +198,78 @@
         }
     };
 
+    const defaultProfile = {
+        name: "Ricardo Silva",
+        email: "ricardo.silva@techsupport.pro",
+        role: "Engenheiro de Suporte",
+        avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuCAEeZRrkIWG4UabBHoIIs0kVuXjEMjvMoekVgyoEjYUCJYUqkl82uXxjTJ9KVMwrynP6CXwUUBqGdQpUBzfMtpr3qLzHkQLjVCT2mI5CF40WCfl3oP1n9z6lh4A2VaK6pPMbl5iV5EEPHf4esg2GsTYADaP7uXEAxHbjRixFweAKGbum-iXpO6dQPvp0RUqv-NSFKzeKCSQxnjt12zDGJJnpMoSBacbeSm6vTZj9RWNRaJwjmhpHXw8eCv_tAq9o1IifDbYQHK2m0"
+    };
+
+    const ProfileModel = {
+        get: () => {
+            const session = AuthModel.getSession();
+            const localProfile = getStorage('profile', null);
+            
+            if (session) {
+                if (session.user_metadata) {
+                    return {
+                        name: session.user_metadata.full_name || session.email || "Usuário",
+                        email: session.email,
+                        role: session.user_metadata.role || (localProfile ? localProfile.role : "Engenheiro de Suporte"),
+                        avatar: session.user_metadata.avatar_url || (localProfile ? localProfile.avatar : defaultProfile.avatar)
+                    };
+                } else {
+                    return {
+                        name: session.name || (localProfile ? localProfile.name : defaultProfile.name),
+                        email: session.email || (localProfile ? localProfile.email : defaultProfile.email),
+                        role: session.role || (localProfile ? localProfile.role : defaultProfile.role),
+                        avatar: localProfile ? localProfile.avatar : defaultProfile.avatar
+                    };
+                }
+            }
+            return localProfile || defaultProfile;
+        },
+        save: async (profile) => {
+            setStorage('profile', profile);
+
+            const session = AuthModel.getSession();
+            if (session && !session.user_metadata) {
+                session.name = profile.name;
+                session.email = profile.email;
+                session.role = profile.role;
+                AuthModel.setSessionLocal(session);
+            }
+
+            if (isSupabaseActive()) {
+                const client = window.SupabaseConnector.client;
+                if (client && client.auth) {
+                    let hasSession = false;
+                    try {
+                        const { data } = await client.auth.getSession();
+                        if (data && data.session) {
+                            hasSession = true;
+                        }
+                    } catch (e) {}
+
+                    if (hasSession) {
+                        const { data, error } = await client.auth.updateUser({
+                            email: profile.email,
+                            data: {
+                                full_name: profile.name,
+                                avatar_url: profile.avatar,
+                                role: profile.role
+                            }
+                        });
+                        if (error) {
+                            console.error("Erro ao atualizar perfil no Supabase Auth:", error);
+                            throw error;
+                        }
+                    }
+                }
+            }
+        }
+    };
+
     // CustomerModel
     const CustomerModel = {
         getAll: () => getStorage('customers', []),
@@ -415,6 +487,7 @@
     window.TechSupportModels = {
         isSupabaseActive: isSupabaseActive,
         AuthModel: AuthModel,
+        ProfileModel: ProfileModel,
         CustomerModel: CustomerModel,
         ContractModel: ContractModel,
         TicketModel: TicketModel,

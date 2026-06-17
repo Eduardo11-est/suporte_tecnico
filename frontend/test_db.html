@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test DB</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <h1>Testing Supabase Tables</h1>
+    <pre id="log">Running tests...</pre>
+    <script>
+        const logEl = document.getElementById('log');
+        function print(msg) {
+            logEl.textContent += "\n" + msg;
+            console.log(msg);
+        }
+
+        async function test() {
+            try {
+                const url = "https://zcfhfsrusvvirsirbozg.supabase.co";
+                const key = "sb_publishable_H_4R6lQUDyB2S4fZxM8XMg_J2lwu_eu";
+                const client = window.supabase.createClient(url, key);
+                
+                print("1. Testing 'profiles' table...");
+                const { data: pData, error: pError } = await client.from('profiles').select('*').limit(1);
+                if (pError) print("profiles error: " + pError.message);
+                else print("profiles success: " + JSON.stringify(pData));
+
+                print("2. Testing 'users' table...");
+                const { data: uData, error: uError } = await client.from('users').select('*').limit(1);
+                if (uError) print("users error: " + uError.message);
+                else print("users success: " + JSON.stringify(uData));
+
+                print("3. Testing 'profiles_suporte' table...");
+                const { data: psData, error: psError } = await client.from('profiles_suporte').select('*').limit(1);
+                if (psError) print("profiles_suporte error: " + psError.message);
+                else print("profiles_suporte success: " + JSON.stringify(psData));
+            } catch (e) {
+                print("Exception: " + e.message);
+            }
+        }
+        test();
+    </script>
+</body>
+</html>
